@@ -1,33 +1,65 @@
 const cargarJugador = async () => {
     const jugadorId = window.location.hash.substring(1);
     const respuestaServicio = await obtenerJugador(jugadorId);
-    dibujarTablaJugador(respuestaServicio);
+    dibujarFormulario(respuestaServicio);
 };
 
-const dibujarTablaJugador = (jugador) => {
-    const tblJugador = document.querySelector("#tblJugador");
-    tblJugador.innerHTML = '';
+const dibujarFormulario = (jugador) => {
+    const missigno = document.querySelector('input[name="missigno"]');
+    missigno.value = jugador.id;
 
-    const tr = document.createElement("tr");
-    const tdId = document.createElement("td");
-    const tdNombre = document.createElement("td");
-    const tdPais = document.createElement("td");
-    const tdNacimiento = document.createElement("td");
-    const tdAcciones = document.createElement("td");
+    const missignoEliminar = document.querySelector('input[name="missignoEliminar"]');
+    missignoEliminar.value = jugador.id;
 
-    tdId.innerText = jugador.id;
-    tdNombre.innerText = jugador.name;
-    tdPais.innerText = jugador.country;
-    tdNacimiento.innerText = jugador.birth_at;
-    tdAcciones.innerHTML = `<a href='listadoJugadores.html'>Ir a listado general</a>`;
+    const h1NombreJugador = document.querySelector('#h1NombreJugador');
+    h1NombreJugador.innerText = `Página de: ${jugador.name}`
+    
+    const txtJugador = document.querySelector('input[name="txtJugador"]');
+    txtJugador.value = jugador.name;
 
-    tr.appendChild(tdId);
-    tr.appendChild(tdNombre);
-    tr.appendChild(tdPais);
-    tr.appendChild(tdNacimiento);
-    tr.appendChild(tdAcciones);
+    const cmbPais = document.querySelector('select[name="cmbPais"]');
+    cmbPais.value = jugador.country;
 
-    tblJugador.appendChild(tr);
+    const calendarPicker = document.querySelector('input[name="txtNacimiento"]');
+    calendarPicker.value = parseDate(jugador.birth_at)
 }
+
+const parseDate = (x) => {
+//    [xx,xx,xxxx] = [xx-xx-xxxx]
+    date = x.split("-");
+    return date = `${date[2]}-${date[1]}-${date[0]}`;
+}
+
+const enviarJugador = async (event) => {
+    event.preventDefault();
+
+    const formulario = document.querySelector("#formularioJugador");
+    const datosExtraidos = new FormData(formulario);
+    const payload = Object.fromEntries(datosExtraidos.entries());
+    await actualizarJugador(payload.missigno,{
+        name: payload.txtJugador,
+        country: payload.cmbPais,
+        birth_at: payload.txtNacimiento
+    });
+};
+
+const formulario = document.querySelector("#formularioJugador");
+formulario.addEventListener("submit", enviarJugador);
+
+const eliminarJugadorEvento = async (event) => {
+    event.preventDefault();
+
+    const confirmaEliminar = confirm("¿Está seguro de eliminar al jugador?");
+    if (confirmaEliminar) {
+        const formulario = document.querySelector("#formularioEliminar");
+        const datosExtraidos = new FormData(formulario);
+        const payload = Object.fromEntries(datosExtraidos.entries());
+        console.table(payload);
+        await eliminarJugador(payload.missignoEliminar);
+    }
+};
+
+const formularioEliminar = document.querySelector("#formularioEliminar");
+formularioEliminar.addEventListener("submit", eliminarJugadorEvento);
 
 document.addEventListener('DOMContentLoaded', cargarJugador);

@@ -40,9 +40,6 @@ const actualizarJugador = async (jugadorId, datos) => {
 const eliminarJugador = async (jugadorId) => {
     const respuesta = await fetch(`${endpointBase}/${jugadorId}`, {
         method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json'
-        },
     });
     return await respuesta.json();
 }
