@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Editar Producto</title>
+</head>
+<body>
+  <h1>Editar Producto</h1>
+  <form id="formularioEditar">
+    <input type="hidden" name="codigo_barras" />
+    <label>Marca</label>
+    <input type="text" name="marca" />
+    <br />
+    <label>Nombre</label>
+    <input type="text" name="nombre" />
+    <br />
+    <label>Medida</label>
+    <input type="text" name="medida" />
+    <br />
+    <label>Cantidad</label>
+    <input type="number" name="cantidad" />
+    <br />
+    <button type="submit">Actualizar</button>
+  </form>
+
+  <form id="formularioEliminar">
+    <input type="hidden" name="codigo_barras" />
+    <button type="submit" style="background:red;color:white;">Eliminar</button>
+  </form>
+
+  <div id="error" style="color:white;background:red;"></div>
+  <br />
+  <a href="index.html">Volver</a>
+
+  <script src="./javascript/eventoEdicion.js"></script>
+  <script src="./javascript/servicios.js"></script>
+</body>
+</html>
