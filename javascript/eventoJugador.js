@@ -39,7 +39,8 @@ const enviarJugador = async (event) => {
     await actualizarJugador(payload.missigno,{
         name: payload.txtJugador,
         country: payload.cmbPais,
-        birth_at: payload.txtNacimiento
+        birth_at: payload.txtNacimiento,
+        equipo_id: payload.cmbEquipo
     });
 };
 
@@ -63,3 +64,14 @@ const formularioEliminar = document.querySelector("#formularioEliminar");
 formularioEliminar.addEventListener("submit", eliminarJugadorEvento);
 
 document.addEventListener('DOMContentLoaded', cargarJugador);
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await llenarComboEquipos('select[name="cmbEquipo"]');
+    cargarJugador();
+});

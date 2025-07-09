@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Equipo</title>
+</head>
+<body>
+    <h1 id="h1NombreEquipo">Editar equipo</h1>
+
+    <div id="divError" style="display:none; background-color:red; color:white; padding:10px;"></div>
+
+    <form id="formularioEquipo">
+        <input type="hidden" name="missigno">
+        <label>Nombre del equipo:</label>
+        <input type="text" name="txtEquipo" />
+        <br />
+        <button type="submit">Actualizar equipo</button>
+        <br />
+        <label>League</label>
+        <input type="text" name="txtLeague" placeholder="Ej: Primera División" />
+        <br />
+
+    </form>
+
+    <form id="formularioEliminar">
+        <input type="hidden" name="missignoEliminar">
+        <button type="submit" style="background-color:red; color:white;">Eliminar equipo</button>
+    </form>
+
+    <a href="listadoEquipos.html">Volver al listado</a>
+
+    <script type="text/javascript" src="./javascript/eventoEquipo.js"></script>
+    <script type="text/javascript" src="./javascript/servicios.js"></script>
+</body>
+</html>

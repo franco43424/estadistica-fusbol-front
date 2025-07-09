@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Equipo</title>
+</head>
+<body>
+    <h1>Crear Equipo</h1>
+
+    <div id="divError" style="display:none; background-color:red; color:white; padding:10px;"></div>
+
+    <form id="formularioEquipo">
+        <label>Nombre del equipo:</label>
+        <input type="text" name="txtEquipo" placeholder="Ej: Colo Colo" />
+        <br />
+        <button type="submit">Guardar Equipo</button>
+        <br />
+        <label>League</label>
+        <input type="text" name="txtLeague" placeholder="Ej: Primera División" />
+        <br />
+
+    </form>
+
+    <a href="listadoEquipos.html">Volver al listado</a>
+
+    <script type="text/javascript" src="./javascript/eventoCreacionEquipo.js"></script>
+    <script type="text/javascript" src="./javascript/servicios.js"></script>
+</body>
+</html>

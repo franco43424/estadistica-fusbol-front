@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Equipos</title>
+</head>
+<body>
+    <h1>Listado de Equipos de Fútbol</h1>
+
+    <div id="divError" style="display:none; background-color: red; color: white; padding: 10px;"></div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tblEquipos">
+            <!-- Aquí se va a rellenar desde JavaScript -->
+        </tbody>
+    </table>
+
+    <a href="crearEquipo.html">Crear nuevo equipo</a>
+
+    <script type="text/javascript" src="./javascript/eventosEquipos.js"></script>
+    <script type="text/javascript" src="./javascript/servicios.js"></script>
+</body>
+</html>
